@@ -20,7 +20,7 @@ const HomeContainer = () => {
   return (
     <>
       <Greetings />
-      <Box flex="1" bgColor="white">
+      <Box flex="1" bgColor="white" px="1rem">
         { loading ? <Spinner /> :
         surah.map((surah: any) => <ListSurah key={surah.number} surah={surah} />)}
       </Box>
