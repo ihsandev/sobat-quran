@@ -1,6 +1,6 @@
 import API from "./api";
 
-export const fetchAllSurah = async (setLoading) => {
+export const fetchAllSurah = async (setLoading : any) => {
   try {
     setLoading(true)
     const res = await fetch(API.surah)
@@ -13,8 +13,15 @@ export const fetchAllSurah = async (setLoading) => {
   }
 }
 
-export const fetchSpecificSurah = async (number: number) => {
-  const res = await fetch(`${API.surah}/${number}`)
-  const resToJson = await res.json()
-  return resToJson;
+export const fetchSpecificSurah = async (number: number, setLoading: any) => {
+  try {
+    setLoading(true)
+    const res = await fetch(`${API.surah}/${number}`)
+    const resToJson = await res.json()
+    return resToJson;
+  } catch (error) {
+    return error;
+  } finally {
+    setLoading(false)
+  }
 }
