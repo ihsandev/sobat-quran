@@ -8,6 +8,7 @@ const Header = () => (
     alignItems="center"
     color="darkPrimary"
     position="fixed"
+    px="1rem"
     left={0}
     zIndex="99"
     right={0}

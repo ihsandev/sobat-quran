@@ -22,7 +22,7 @@ const DetailSurahContainer = () => {
 
   return (
     <>
-      <Box>
+      <Box px="1rem">
         { loading ? <Spinner /> :
           detailSurah?.verses &&
           detailSurah?.verses?.map((detail: any, i: number) => {

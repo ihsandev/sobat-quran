@@ -3,7 +3,7 @@ import { Box, Heading, Text } from "@chakra-ui/layout";
 
 const Greetings = () => {
   return (
-    <Box my="1rem">
+    <Box my="1rem" px="1rem">
       <Box mb="0.5rem">
         <Text fontSize="0.8rem" fontWeight="500" color="secondary">{`Assalamu'alaikum`}</Text>
         <Heading fontSize="1.3rem" color="darkPrimary">{`Sobat Qu'ran`}</Heading>
