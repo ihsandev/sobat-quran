@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
 import Link from 'next/link'
-const ListSurah = ({surah}) => {
+const ListSurah = ({surah}: any) => {
   return (
     <Link key={surah.number} href={`/surah/${surah.number}`}>
       <a>
