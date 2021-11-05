@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Box, Text } from "@chakra-ui/layout";
+import { Box, Flex, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
 import { fetchSpecificSurah } from '../../../services';
 import { Spinner } from '@chakra-ui/spinner';
 import { Image } from '@chakra-ui/image';
+import { FiBookmark, FiShare2, FiPlay, FiPause } from 'react-icons/fi'
+import Icon from '@chakra-ui/icon';
+import PlayAudio from './partials/Play';
 
 const DetailSurahContainer = () => {
   const router = useRouter()
@@ -32,9 +35,15 @@ const DetailSurahContainer = () => {
           >
             <Box position="relative" zIndex="1" textAlign="center">
               <Text fontSize="1.5rem" color="whiteAlpha.900">Surah {detailSurah?.name?.transliteration.id}</Text>
+              <Text mb="1rem" fontSize="1rem" color="whiteAlpha.700">({detailSurah?.name?.translation.id})</Text>
               <Text fontSize="0.7rem" color="whiteAlpha.700">Ayat 1 - {detailSurah?.numberOfVerses}</Text>
               {Number(detailSurah?.number) !== 9 && (
-                <Text mt="1rem" fontSize="1.5rem" color="whiteAlpha.900">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
+                <Text 
+                  mt="1rem" 
+                  fontSize="1.8rem" 
+                  fontWeight="bold"
+                  fontFamily="Scheherazade"
+                  color="whiteAlpha.900">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</Text>
               )}
             </Box>
             <Image
@@ -57,17 +66,49 @@ const DetailSurahContainer = () => {
               <Box key={i}
                 borderBottom="1px solid"
                 borderColor="border"
-                bgColor={i % 2 === 0 ? "white" : "border"}
-                p="1rem"
+                px="1rem"
+                py="2rem"
               >
+                <Box bgColor="soft" color="primary" p="0.5rem" borderRadius="5px" mb="1rem">
+                  <Flex alignItems="center" justifyContent="space-between">
+                    <Box>
+                      <Text
+                        bgColor="primary"
+                        color="white"
+                        borderRadius="50%"
+                        w="23px"
+                        h="23px"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        fontSize="0.7rem"
+                      >{detail?.number?.inSurah}</Text>
+                    </Box>
+                    <Box>
+                      <Flex alignItems="center" fontSize="1.2rem">
+                        <Box cursor="pointer">
+                          <Icon color="purple.200" as={FiShare2} mr="1rem" />
+                        </Box>
+                        <PlayAudio detail={detail} />
+                        <Box cursor="pointer">
+                          <Icon color="purple.200" as={FiBookmark} />
+                        </Box>
+                      </Flex>
+                    </Box>
+                  </Flex>
+                </Box>
                 <Text 
-                  fontSize="1.3rem" 
-                  fontWeight="500"
-                  mb="0.5rem" 
+                  fontSize="1.7rem" 
+                  fontWeight="bold"
+                  mb="1rem" 
+                  fontFamily="Scheherazade"
                   textAlign="right"
                   color="darkPrimary"
                 >{detail.text.arab}</Text>
-                <Text color="secondary" fontSize="0.8rem">{detail.translation.id}</Text>
+                <Text 
+                  color="secondary"
+                  fontWeight="500" 
+                  fontSize="0.8rem">{detail.translation.id}</Text>
               </Box>
             )
           })

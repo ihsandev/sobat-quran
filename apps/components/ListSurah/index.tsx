@@ -10,7 +10,7 @@ const ListSurah = ({surah}: any) => {
           borderBottom="1px solid"
           bgColor="white"
           borderColor="border"
-          _hover={{bgColor: 'border'}}
+          _hover={{bgColor: 'soft'}}
           p="1rem"
         >
           <Flex alignItems="center">
@@ -34,7 +34,7 @@ const ListSurah = ({surah}: any) => {
               <Text fontSize="0.7rem" color="secondary">{surah.name.translation.id}</Text>
             </Box>
           </Flex>
-          <Heading fontSize="1.5rem" color="primary">{surah.name.short}</Heading>
+          <Heading fontSize="1.8rem" color="primary" fontFamily="Scheherazade">{surah.name.short}</Heading>
         </Flex>
       </a>
     </Link>
