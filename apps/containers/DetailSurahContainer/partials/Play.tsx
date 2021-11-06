@@ -9,14 +9,20 @@ const PlayAudio = ({detail}: any) => {
   const handlePlayAudio = (audio: any) => {
     const myAudio : any = document.getElementById(`myAudio-${audio}`);
     const duration : any = (Number(myAudio.duration)*1000).toFixed(0);
-    setPlay(true)
-    setTimeout(() => {
-      setPlay(false)
-    }, duration)
     if(myAudio.paused) {
-      myAudio.play()
+      const playAudio = async () => {
+        let play = await myAudio.play()
+        if(play !== undefined) {
+          await play
+        };
+      }
+      setPlay(true)
+      setTimeout(() => {
+        setPlay(false)
+      }, duration)
+      return playAudio()
     } else {
-      myAudio.pause()
+      return myAudio.pause()
     }
   }
 

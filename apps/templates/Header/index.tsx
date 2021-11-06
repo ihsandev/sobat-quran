@@ -27,7 +27,7 @@ const Header = () => {
               <Icon as={FiArrowLeft} fontSize="1.2rem" />
             </Box>
           )}
-          <Heading fontSize="1.5rem">
+          <Heading fontSize="1.5rem" color="primary">
             Quran App
           </Heading>
         </Flex>

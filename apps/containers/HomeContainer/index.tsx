@@ -2,7 +2,7 @@ import {useState, useEffect } from 'react'
 import { Box } from "@chakra-ui/layout"
 import { fetchAllSurah } from '../../../services'
 import { Greetings, ListSurah } from '../../components'
-import { Spinner } from '@chakra-ui/react'
+import { LoadingListSurah } from '../../../utils/loading'
 
 const HomeContainer = () => {
   const [surah, setSurah] = useState([])
@@ -20,9 +20,18 @@ const HomeContainer = () => {
   return (
     <>
       <Greetings />
-      <Box flex="1" bgColor="white" px="1rem">
-        { loading ? <Spinner /> :
-        surah.map((surah: any) => <ListSurah key={surah.number} surah={surah} />)}
+      <Box bgColor="white" px="1rem">
+        { loading ? (
+          <>
+            <LoadingListSurah />
+            <LoadingListSurah />
+            <LoadingListSurah />
+            <LoadingListSurah />
+            <LoadingListSurah />
+            <LoadingListSurah />
+          </>
+        ) :
+        surah && surah.map((surah: any) => <ListSurah key={surah.number} surah={surah} />)}
       </Box>
     </>
   )

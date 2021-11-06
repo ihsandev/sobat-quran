@@ -4,9 +4,10 @@ import { useRouter } from "next/dist/client/router";
 import { fetchSpecificSurah } from '../../../services';
 import { Spinner } from '@chakra-ui/spinner';
 import { Image } from '@chakra-ui/image';
-import { FiBookmark, FiShare2, FiPlay, FiPause } from 'react-icons/fi'
+import { FiBookmark, FiShare2 } from 'react-icons/fi'
 import Icon from '@chakra-ui/icon';
 import PlayAudio from './partials/Play';
+import { Skeleton } from '@chakra-ui/react';
 
 const DetailSurahContainer = () => {
   const router = useRouter()
@@ -33,10 +34,29 @@ const DetailSurahContainer = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Box position="relative" zIndex="1" textAlign="center">
-              <Text fontSize="1.5rem" color="whiteAlpha.900">Surah {detailSurah?.name?.transliteration.id}</Text>
-              <Text mb="1rem" fontSize="1rem" color="whiteAlpha.700">({detailSurah?.name?.translation.id})</Text>
-              <Text fontSize="0.7rem" color="whiteAlpha.700">Ayat 1 - {detailSurah?.numberOfVerses}</Text>
+            <Box
+              display="grid"
+              justifyItems="center" 
+              position="relative" zIndex="1" textAlign="center">
+              {loading ? (
+                 <Skeleton w="80%" h="10px" mb="1rem" />
+              ) : (
+                <Text fontSize="1.5rem" color="whiteAlpha.900">
+                  Surah {detailSurah?.name?.transliteration.id}
+                </Text>
+              )}
+              {loading ? (
+                 <Skeleton w="50%" h="10px" mb="1rem" />
+              ) : (
+                <Text mb="1rem" fontSize="1rem" color="whiteAlpha.700">({detailSurah?.name?.translation.id})</Text>
+              )}
+              {loading ? (
+                 <Skeleton w="30%" h="10px" />
+              ) : (
+                <Text fontSize="0.7rem" color="whiteAlpha.700">
+                  Ayat 1 - {detailSurah?.numberOfVerses}
+                </Text>
+              )}
               {Number(detailSurah?.number) !== 9 && (
                 <Text 
                   mt="1rem" 
@@ -56,7 +76,7 @@ const DetailSurahContainer = () => {
               src="/images/quran_logo.png" alt="Logo Quran" />
           </Box>
         </Box>
-        { loading ? <Box px="1rem"><Spinner /></Box> :
+        { loading ? <Flex justifyContent="center" px="1rem"><Spinner /></Flex> :
           detailSurah?.verses &&
           detailSurah?.verses?.map((detail: any, i: number) => {
             if(Number(detailSurah?.number) === 1) {
