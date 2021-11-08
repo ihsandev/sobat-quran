@@ -3,7 +3,6 @@ const runtimeCaching = require('next-pwa/cache');
 
 module.exports = withPWA({
   // other next config
-  swcMinify: true,
   images: {
     formats: ['image/avif', 'image/webp']
   },
