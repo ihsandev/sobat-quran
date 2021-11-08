@@ -1,6 +1,9 @@
+import { useColorMode } from '@chakra-ui/color-mode';
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
 import Link from 'next/link'
-const ListSurah = ({surah}: any) => {
+import { IListSurah } from '../../../utils/data-types';
+const ListSurah = ({surah}: {surah: IListSurah}) => {
+  const { colorMode } = useColorMode()
   return (
     <Link key={surah.number} href={`/surah/${surah.number}`}>
       <a>
@@ -8,9 +11,8 @@ const ListSurah = ({surah}: any) => {
           justifyContent="space-between" 
           alignItems="center"
           borderBottom="1px solid"
-          bgColor="white"
-          borderColor="border"
-          _hover={{bgColor: 'soft'}}
+          borderColor={colorMode === 'light' ? "soft" : "darkPrimary"}
+          _hover={{bgColor: colorMode === 'light' ? "soft" : "darkPrimary"}}
           p="1rem"
         >
           <Flex alignItems="center">
@@ -18,7 +20,7 @@ const ListSurah = ({surah}: any) => {
               mr="1rem"
               border="1px solid"
               borderColor="primary"
-              color="darkPrimary"
+              color={colorMode === 'light' ? "darkPrimary" : "soft"}
               w="30px"
               fontWeight="medium"
               fontSize="0.7rem"
@@ -30,7 +32,9 @@ const ListSurah = ({surah}: any) => {
             >
               {surah.number}</Text>
             <Box>
-              <Heading color="darkPrimary" fontSize="1rem">{surah.name.transliteration.id}</Heading>  
+              <Heading 
+                color={colorMode === 'light' ? "darkPrimary" : "soft"} 
+                fontSize="1rem">{surah.name.transliteration.id}</Heading>  
               <Text fontSize="0.7rem" color="secondary">{surah.name.translation.id}</Text>
             </Box>
           </Flex>

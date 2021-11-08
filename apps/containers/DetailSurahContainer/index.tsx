@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useColorMode } from '@chakra-ui/color-mode';
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
 import { fetchSpecificSurah } from '../../../services';
@@ -8,12 +9,15 @@ import { FiBookmark, FiShare2 } from 'react-icons/fi'
 import Icon from '@chakra-ui/icon';
 import PlayAudio from './partials/Play';
 import { Skeleton } from '@chakra-ui/react';
+import { IDetailSurah, IVerses } from '../../../utils/data-types';
 
 const DetailSurahContainer = () => {
   const router = useRouter()
+  const { colorMode } = useColorMode()
   const { number } : any = router?.query;
-  const [detailSurah, setDetailSurah] = useState<any>({})
   const [loading, setLoading] = useState(false)
+  const [detailSurah, setDetailSurah] = useState<IDetailSurah | any>({})
+  const isLight = colorMode === 'light';
   
   useEffect(() => {
     const getSpecificSurah = async () => {
@@ -78,18 +82,20 @@ const DetailSurahContainer = () => {
         </Box>
         { loading ? <Flex justifyContent="center" px="1rem"><Spinner /></Flex> :
           detailSurah?.verses &&
-          detailSurah?.verses?.map((detail: any, i: number) => {
+          detailSurah?.verses?.map((detail: IVerses, i: number) => {
             if(Number(detailSurah?.number) === 1) {
               delete detailSurah?.verses[0]
             }
             return (
               <Box key={i}
                 borderBottom="1px solid"
-                borderColor="border"
+                borderColor={isLight ? "border" : "darkPrimary"}
                 px="1rem"
                 py="2rem"
               >
-                <Box bgColor="soft" color="primary" p="0.5rem" borderRadius="5px" mb="1rem">
+                <Box 
+                  bgColor={isLight ? "soft" : "darkPrimary"} 
+                  color="primary" p="0.5rem" borderRadius="5px" mb="1rem">
                   <Flex alignItems="center" justifyContent="space-between">
                     <Box>
                       <Text
@@ -107,11 +113,15 @@ const DetailSurahContainer = () => {
                     <Box>
                       <Flex alignItems="center" fontSize="1.2rem">
                         <Box cursor="pointer">
-                          <Icon color="purple.200" as={FiShare2} mr="1rem" />
+                          <Icon 
+                            color={isLight ? "purple.200" : "purple.900"} 
+                            as={FiShare2} mr="1rem" />
                         </Box>
                         <PlayAudio detail={detail} />
                         <Box cursor="pointer">
-                          <Icon color="purple.200" as={FiBookmark} />
+                          <Icon 
+                            color={isLight ? "purple.200" : "purple.900"} 
+                            as={FiBookmark} />
                         </Box>
                       </Flex>
                     </Box>
@@ -123,7 +133,7 @@ const DetailSurahContainer = () => {
                   mb="1rem" 
                   fontFamily="Scheherazade"
                   textAlign="right"
-                  color="darkPrimary"
+                  color={isLight ? "darkPrimary" : "soft"}
                 >{detail.text.arab}</Text>
                 <Text 
                   color="secondary"

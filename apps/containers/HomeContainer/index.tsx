@@ -3,9 +3,10 @@ import { Box } from "@chakra-ui/layout"
 import { fetchAllSurah } from '../../../services'
 import { Greetings, ListSurah } from '../../components'
 import { LoadingListSurah } from '../../../utils/loading'
+import { IListSurah } from '../../../utils/data-types'
 
 const HomeContainer = () => {
-  const [surah, setSurah] = useState([])
+  const [surah, setSurah] = useState<IListSurah[]>([])
   const [loading, setLoading] = useState(false)
 
   const getSurah = async () => {
@@ -20,7 +21,7 @@ const HomeContainer = () => {
   return (
     <>
       <Greetings />
-      <Box bgColor="white" px="1rem">
+      <Box px="1rem">
         { loading ? (
           <>
             <LoadingListSurah />
@@ -31,7 +32,7 @@ const HomeContainer = () => {
             <LoadingListSurah />
           </>
         ) :
-        surah && surah.map((surah: any) => <ListSurah key={surah.number} surah={surah} />)}
+        surah && surah.map((surah: IListSurah) => <ListSurah key={surah.number} surah={surah} />)}
       </Box>
     </>
   )

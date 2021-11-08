@@ -2,11 +2,12 @@ import { useState } from 'react'
 import Icon from "@chakra-ui/icon";
 import { Box } from "@chakra-ui/layout";
 import { FiPause, FiPlay } from 'react-icons/fi';
+import { IVerses } from '../../../../utils/data-types';
 
-const PlayAudio = ({detail}: any) => {
+const PlayAudio = ({detail}: {detail: IVerses}) => {
   const [play, setPlay] = useState(false)
 
-  const handlePlayAudio = (audio: any) => {
+  const handlePlayAudio = (audio: string) => {
     const myAudio : any = document.getElementById(`myAudio-${audio}`);
     const duration : any = (Number(myAudio.duration)*1000).toFixed(0);
     if(myAudio.paused) {
