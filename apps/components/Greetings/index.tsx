@@ -18,25 +18,26 @@ const Greetings = () => {
       <Box 
         position="relative" 
         overflow="hidden"
-        h="130px"
+        h="120px"
         px="0.5rem"
         borderRadius="10px"
         bgColor="#672cbc"
         display="flex"
         alignItems="center"
       >
-        <Box px="0.7rem" w="229px">
+        <Box px="0.7rem" w="229px" position="relative" zIndex="1">
           <Heading color="white" mb="0.3rem" fontSize="0.7rem">{`Keutamaan Membaca Al-Qur'an`}</Heading>
-          <Text color="whiteAlpha.800" fontSize="0.5rem" lineHeight="15px" fontStyle="italic">
+          <Text color="whiteAlpha.800" fontSize="0.4rem" lineHeight="15px" fontStyle="italic">
             {`
               “ Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala ” (HR. Muslim)
             `}
           </Text>
         </Box>
         <Image
-          right="-10px"
+          right="-15px"
           bottom="15px"
           w="125px"
+          opacity={0.7}
           position="absolute" 
           src="/images/quran_logo.png" alt="Logo Quran" />
       </Box>
