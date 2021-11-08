@@ -15,6 +15,7 @@ export default function MetaTag() {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" 
         rel="stylesheet" 
       />
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       <link rel='manifest' href='/manifest.json' />
     </Head>
   )

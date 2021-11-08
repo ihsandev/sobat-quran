@@ -1,7 +1,7 @@
 {
     "theme_color": "#672CBC",
     "background_color": "#672CBC",
-    "display": "standalone",
+    "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
     "name": "Sobat Qur'an",
