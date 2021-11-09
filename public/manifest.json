@@ -1,12 +1,12 @@
 {
     "theme_color": "#672CBC",
     "background_color": "#672CBC",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "/",
     "scope": "/",
-    "name": "Sobat Qur'an",
-    "short_name": "Sobat Qur'an",
-    "description": "Semua bisa baca Al Qur'an dengan Sobat Qu'ran",
+    "name": "Qur'an Digital",
+    "short_name": "Qur'an Digital",
+    "description": "Semua bisa baca Al Qur'an dengan Qur'an Digital Indonesia",
     "icons": [
         {
           "src": "/icons/icon-192x192.png",
