@@ -29,7 +29,7 @@ const Greetings = () => {
           <Heading color="white" mb="0.3rem" fontSize="0.7rem">{`Keutamaan Membaca Al-Qur'an`}</Heading>
           <Text color="whiteAlpha.800" fontSize="0.4rem" lineHeight="15px" fontStyle="italic">
             {`
-              “ Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala ” (HR. Muslim)
+              “Seorang yang lancar membaca Al Quran akan bersama para malaikat yang mulia dan senantiasa selalu taat kepada Allah, adapun yang membaca Al Quran dan terbata-bata di dalamnya dan sulit atasnya bacaan tersebut maka baginya dua pahala ” (HR. Muslim)
             `}
           </Text>
         </Box>

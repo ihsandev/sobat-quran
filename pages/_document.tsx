@@ -14,11 +14,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>{"Sobat Qur'an"}</title>
+          <title>{"Qur'an Digital ID"}</title>
           <meta charSet="utf-8" />
-          <meta name="og:description" content="Baca Qur'an Online dengan Sobat Qur'an" />
-          <meta name="og:keywords" content="Sobat Quran, Baca Qur'an Online" />
-          <meta property="og:image" content="/icons/icon-512x512.png" />  
+          <meta name="og:description" content="Baca Qur'an Online dengan Qur'an Digital Indonesia" />
+          <meta name="og:keywords" content="Qur'an Digital Indonesia" />
+          <meta property="og:image" content="/images/og_image.png" />  
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link href="https://fonts.googleapis.com/css2?family=Scheherazade:wght@400;700&display=swap" rel="stylesheet" />
           <link 
