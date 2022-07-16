@@ -1,10 +1,10 @@
-import { HomeContainer } from "../apps/containers"
-import Template from "../apps/templates"
+import { QuranContainer } from "../apps/containers";
+import Template from "../apps/templates";
 
-export default function Home() {
+export default function Quran() {
   return (
-   <Template>
-    <HomeContainer />
-   </Template>
-  )
+    <Template>
+      <QuranContainer />
+    </Template>
+  );
 }
