@@ -2,6 +2,7 @@ import { Action, State } from "./contexts.types";
 
 export const initialState = {
   surahList: [],
+  juzList: {},
   bookmark: [],
 };
 
@@ -11,6 +12,11 @@ const reducer = (state: State = initialState, action: Action) => {
       return {
         ...state,
         surahList: action.payload,
+      };
+    case "SET_LIST_JUZ":
+      return {
+        ...state,
+        juzList: action.payload,
       };
     case "SET_BOOKMARK":
       return {

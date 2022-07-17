@@ -1,1 +1,2 @@
-export * from './surah';
+export * from "./surah";
+export * from "./juz";

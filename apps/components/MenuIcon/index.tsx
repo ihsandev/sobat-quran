@@ -19,7 +19,6 @@ const MenuIcon = ({ label, icon, link, isActive, counter }: IMenuIcon) => {
   useEffect(() => {
     getBookmark();
   }, []);
-  console.log(counter);
   return (
     <Flex
       justifyContent="center"

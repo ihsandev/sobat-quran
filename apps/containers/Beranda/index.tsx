@@ -1,10 +1,10 @@
 import { Box } from "@chakra-ui/react";
-import { NotFound } from "../../components";
+import { Greetings } from "../../components";
 
 const BerandaContainer = () => {
   return (
     <Box>
-      <NotFound label="Fitur Belum Tersedia" />
+      <Greetings />
     </Box>
   );
 };

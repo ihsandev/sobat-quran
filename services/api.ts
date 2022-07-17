@@ -1,7 +1,8 @@
-const baseUrl = 'https://api.quran.sutanlab.id'
+const baseUrl = "https://api.quran.sutanlab.id";
 
 const API = {
-  surah: `${baseUrl}/surah`
-}
+  surah: `${baseUrl}/surah`,
+  juz: `${baseUrl}/juz`,
+};
 
 export default API;

@@ -5,7 +5,7 @@ import { BookmarkAyat, ListSurah, NotFound } from "../../components";
 const PenandaContainer = () => {
   const { state } = useAppContext();
   return (
-    <Box>
+    <Box pt="0.5rem" pb="8rem">
       {state.bookmark?.length ? (
         <>
           {state.bookmark?.map((mark: any, i: number) => {

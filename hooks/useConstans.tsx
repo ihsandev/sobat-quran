@@ -5,7 +5,6 @@ import useAppContext from "../contexts";
 export default function useConstants() {
   const { pathname } = useRouter();
   const { state } = useAppContext();
-  console.log(state.bookmark?.length);
   const menus = [
     {
       id: 1,

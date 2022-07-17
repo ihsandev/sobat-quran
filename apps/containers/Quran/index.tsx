@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Box } from "@chakra-ui/layout";
 import { fetchAllSurah } from "../../../services";
-import { Greetings, ListSurah } from "../../components";
-import { LoadingListSurah } from "../../../utils/loading";
-import { IListSurah } from "../../../utils/data-types";
 import useAppContext from "../../../contexts";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import ListQuran from "./partials/List";
+import { NotFound } from "../../components";
 
 const HomeContainer = () => {
   const { state, dispatch } = useAppContext();
@@ -20,32 +19,23 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <Box pb="8rem">
-      <Greetings />
-      <Box px="1rem">
-        {loading ? (
-          <>
-            <LoadingListSurah />
-            <LoadingListSurah />
-            <LoadingListSurah />
-            <LoadingListSurah />
-            <LoadingListSurah />
-            <LoadingListSurah />
-          </>
-        ) : (
-          state.surahList &&
-          state.surahList?.map((surah: IListSurah) => (
-            <ListSurah
-              key={surah.number}
-              number={surah?.number}
-              title={surah.name.transliteration.id}
-              desc={surah.name.translation.id}
-              arabic={surah.name.short}
-            />
-          ))
-        )}
-      </Box>
-    </Box>
+    <>
+      <Tabs isFitted colorScheme="purple">
+        <TabList>
+          <Tab>Surah</Tab>
+          <Tab>Juz</Tab>
+        </TabList>
+
+        <TabPanels maxH="80vh" overflow="auto">
+          <TabPanel>
+            <ListQuran surah={state.surahList} loading={loading} />
+          </TabPanel>
+          <TabPanel>
+            <NotFound />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
   );
 };
 
