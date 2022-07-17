@@ -5,15 +5,20 @@ import { useRouter } from "next/dist/client/router";
 import { fetchSpecificSurah } from "../../../services";
 import { Spinner } from "@chakra-ui/spinner";
 import { Image } from "@chakra-ui/image";
-import { FiBookmark, FiShare2 } from "react-icons/fi";
+import { FiShare2 } from "react-icons/fi";
 import Icon from "@chakra-ui/icon";
 import PlayAudio from "./partials/Play";
 import { Skeleton } from "@chakra-ui/react";
 import { IDetailSurah, IVerses } from "../../../utils/data-types";
+import BookmarkAyat from "../../components/Bookmark";
+import useAppContext from "../../../contexts";
+import { getFromLocalStorage } from "../../../utils/function";
+import useAction from "../../../hooks/useAction";
 
 const DetailSurahContainer = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
+  const { checkIsBookmark } = useAction();
   const { number }: any = router?.query;
   const [loading, setLoading] = useState(false);
   const [detailSurah, setDetailSurah] = useState<IDetailSurah | any>({});
@@ -26,6 +31,19 @@ const DetailSurahContainer = () => {
     };
     getSpecificSurah();
   }, [number]);
+
+  const scroll = () => {
+    const idAyat = getFromLocalStorage("id-ayat");
+    if (idAyat) {
+      const section: any = document.getElementById(idAyat);
+      section?.scrollIntoView();
+    }
+  };
+
+  useEffect(() => {
+    scroll();
+    return () => scroll();
+  });
 
   return (
     <Box pb="8rem">
@@ -102,13 +120,16 @@ const DetailSurahContainer = () => {
           if (Number(detailSurah?.number) === 1) {
             delete detailSurah?.verses[0];
           }
+          const isBoomark = checkIsBookmark(detail?.number);
           return (
             <Box
               key={i}
+              bgColor={isBoomark ? "purple.50" : "inherit"}
               borderBottom="1px solid"
               borderColor={isLight ? "border" : "darkPrimary"}
               px="1rem"
               py="2rem"
+              id={`ayat-${detail.number.inSurah}-${detailSurah.number}`}
             >
               <Box
                 bgColor={isLight ? "soft" : "darkPrimary"}
@@ -143,12 +164,11 @@ const DetailSurahContainer = () => {
                         />
                       </Box>
                       <PlayAudio detail={detail} />
-                      <Box cursor="pointer">
-                        <Icon
-                          color={isLight ? "purple.200" : "purple.900"}
-                          as={FiBookmark}
-                        />
-                      </Box>
+                      <BookmarkAyat
+                        detail={detail}
+                        name={detailSurah?.name}
+                        numberId={detailSurah?.number}
+                      />
                     </Flex>
                   </Box>
                 </Flex>

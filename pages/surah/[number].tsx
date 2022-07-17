@@ -1,12 +1,12 @@
-import { DetailSurahContainer } from "../../apps/containers"
-import Template from "../../apps/templates"
+import { DetailSurahContainer } from "../../apps/containers";
+import Template from "../../apps/templates";
 
 const DetailSurah = () => {
   return (
-    <Template>
+    <Template hideFooter>
       <DetailSurahContainer />
     </Template>
-  )
-}
+  );
+};
 
 export default DetailSurah;

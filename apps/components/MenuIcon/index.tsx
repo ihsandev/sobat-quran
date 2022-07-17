@@ -1,18 +1,25 @@
-import { Flex, Text, useColorMode } from "@chakra-ui/react";
+import { Badge, Box, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
-import { FiChrome } from "react-icons/fi";
+import { ReactNode, useEffect } from "react";
+import { FiHome } from "react-icons/fi";
+import useAction from "../../../hooks/useAction";
 
 interface IMenuIcon {
   label?: string;
   icon?: ReactNode;
   isActive?: boolean;
   link?: string | any;
+  counter?: any;
 }
 
-const MenuIcon = ({ label, icon, link, isActive }: IMenuIcon) => {
+const MenuIcon = ({ label, icon, link, isActive, counter }: IMenuIcon) => {
   const { push } = useRouter();
+  const { getBookmark } = useAction();
   const { colorMode } = useColorMode();
+  useEffect(() => {
+    getBookmark();
+  }, []);
+  console.log(counter);
   return (
     <Flex
       justifyContent="center"
@@ -37,10 +44,28 @@ const MenuIcon = ({ label, icon, link, isActive }: IMenuIcon) => {
           boxSizing="border-box"
           transition="ease 0.5s"
         >
-          {icon || <FiChrome size={25} />}
+          {icon || <FiHome size={25} />}
         </Flex>
       ) : (
-        <> {icon || <FiChrome size={25} />}</>
+        <Box>
+          {!!counter && counter > 0 && (
+            <Badge
+              position="absolute"
+              bottom={6}
+              left={3}
+              bgColor="primary"
+              color="white"
+              fontSize="0.8rem"
+              textAlign="center"
+              w="18px"
+              h="18px"
+              rounded="full"
+            >
+              {counter}
+            </Badge>
+          )}
+          {icon || <FiHome size={25} />}
+        </Box>
       )}
       <Text
         mt={isActive ? "1.8rem" : "0.3rem"}

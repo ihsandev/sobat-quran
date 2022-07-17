@@ -1,4 +1,5 @@
 import { Flex, useColorMode } from "@chakra-ui/react";
+import useAppContext from "../../../contexts";
 import useConstants from "../../../hooks/useConstans";
 import { MenuIcon } from "../../components";
 
@@ -30,6 +31,7 @@ const Footer = () => {
           link={menu.link}
           icon={menu.icon}
           isActive={menu.isActive}
+          counter={menu.counter}
         />
       ))}
     </Flex>
