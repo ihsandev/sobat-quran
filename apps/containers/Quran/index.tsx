@@ -9,13 +9,8 @@ const HomeContainer = () => {
   const { state, dispatch } = useAppContext();
   const [loading, setLoading] = useState(false);
 
-  const getSurah = async () => {
-    const result = await fetchAllSurah(setLoading);
-    dispatch({ type: "SET_LIST_SURAH", payload: result.data });
-  };
-
   useEffect(() => {
-    getSurah();
+    fetchAllSurah(setLoading, dispatch);
   }, []);
 
   return (

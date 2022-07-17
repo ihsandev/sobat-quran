@@ -14,6 +14,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "framer-motion": "^4",
+    "memory-cache": "^0.2.0",
     "next": "12.0.1",
     "next-pwa": "^5.4.0",
     "react": "17.0.2",
@@ -21,6 +22,7 @@
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@types/memory-cache": "^0.2.2",
     "@types/react": "17.0.33",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.1",
