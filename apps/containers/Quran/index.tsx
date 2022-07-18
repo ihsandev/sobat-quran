@@ -11,6 +11,7 @@ const HomeContainer = () => {
 
   useEffect(() => {
     fetchAllSurah(setLoading, dispatch);
+    localStorage.removeItem("id-ayat");
   }, []);
 
   return (

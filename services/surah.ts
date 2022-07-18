@@ -16,9 +16,8 @@ export const fetchAllSurah = async (setLoading: any, dispatch: any) => {
 export const fetchSpecificSurah = async (number: number, setLoading: any) => {
   try {
     setLoading(true);
-    const res = await fetch(`${API.surah}/${number}`);
-    const resToJson = await res.json();
-    return resToJson;
+    const res = await cachedFetch(`${API.surah}/${number}`);
+    return res;
   } catch (error) {
     return error;
   } finally {

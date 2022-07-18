@@ -8,7 +8,7 @@ const PenandaContainer = () => {
     <Box pt="0.5rem" pb="8rem">
       {state.bookmark?.length ? (
         <>
-          {state.bookmark?.map((mark: any, i: number) => {
+          {state.bookmark?.reverse().map((mark: any, i: number) => {
             return (
               <ListSurah
                 key={i}

@@ -2,10 +2,12 @@ import { Box } from "@chakra-ui/react";
 import { IListSurah } from "../../../../utils/data-types";
 import { LoadingListSurah } from "../../../../utils/loading";
 import { ListSurah } from "../../../components";
+import LastAyat from "./LastAyat";
 
 const ListQuran = ({ surah, loading }: any) => {
   return (
     <>
+      <LastAyat />
       <Box px="1rem" pb="4rem">
         {loading ? (
           <>
