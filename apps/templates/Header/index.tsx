@@ -14,7 +14,7 @@ const Header = () => {
   const showArrow = showArrowPath.includes(pathname);
   return (
     <Flex
-      maxW="414px"
+      maxW="468px"
       m="0 auto"
       justifyContent="space-between"
       alignItems="center"

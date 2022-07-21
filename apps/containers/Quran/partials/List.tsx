@@ -8,7 +8,7 @@ const ListQuran = ({ surah, loading }: any) => {
   return (
     <>
       <LastAyat />
-      <Box px="1rem" pb="4rem">
+      <Box pb="4rem">
         {loading ? (
           <>
             {[...new Array(12)].map((_, i) => (

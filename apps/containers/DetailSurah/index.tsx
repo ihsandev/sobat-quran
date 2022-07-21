@@ -11,7 +11,6 @@ import PlayAudio from "./partials/Play";
 import { Skeleton } from "@chakra-ui/react";
 import { IDetailSurah, IVerses } from "../../../utils/data-types";
 import BookmarkAyat from "../../components/Bookmark";
-import useAppContext from "../../../contexts";
 import { getFromLocalStorage } from "../../../utils/function";
 import useAction from "../../../hooks/useAction";
 
@@ -46,7 +45,7 @@ const DetailSurahContainer = () => {
   });
 
   return (
-    <Box pb="8rem">
+    <Box pb="8rem" bgColor="white">
       <Box p="1rem">
         <Box
           bgColor="#672cbc"

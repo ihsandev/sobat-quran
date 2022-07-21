@@ -14,6 +14,7 @@ const BookmarkAyat = ({ detail, name, size, numberId }: IBookmarkAyat) => {
   const { addToStorage, removeFromStorage, checkIsBookmark } = useAction();
   const isBoomark = checkIsBookmark(detail?.number);
   const handleBookmark = () => {
+    localStorage.removeItem("id-ayat");
     const params = {
       name: name?.transliteration?.id,
       number: detail?.number,

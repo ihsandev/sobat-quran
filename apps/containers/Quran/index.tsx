@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllSurah } from "../../../services";
 import useAppContext from "../../../contexts";
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import ListQuran from "./partials/List";
 import { NotFound } from "../../components";
 
@@ -15,15 +15,15 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <>
+    <Box bgColor="white">
       <Tabs isFitted colorScheme="purple">
         <TabList>
           <Tab>Surah</Tab>
           <Tab>Juz</Tab>
         </TabList>
 
-        <TabPanels maxH="80vh" overflow="auto">
-          <TabPanel>
+        <TabPanels maxH="calc(100vh - 10vh)" overflow="auto">
+          <TabPanel px={0}>
             <ListQuran surah={state.surahList} loading={loading} />
           </TabPanel>
           <TabPanel>
@@ -31,7 +31,7 @@ const HomeContainer = () => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-    </>
+    </Box>
   );
 };
 
