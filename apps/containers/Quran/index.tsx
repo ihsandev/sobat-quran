@@ -1,13 +1,22 @@
 import { useState, useEffect } from "react";
 import { fetchAllSurah } from "../../../services";
 import useAppContext from "../../../contexts";
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
+import {
+  Box,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  useColorMode,
+} from "@chakra-ui/react";
 import ListQuran from "./partials/List";
 import { NotFound } from "../../components";
 
 const HomeContainer = () => {
   const { state, dispatch } = useAppContext();
   const [loading, setLoading] = useState(false);
+  const { colorMode } = useColorMode();
 
   useEffect(() => {
     fetchAllSurah(setLoading, dispatch);
@@ -15,7 +24,7 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <Box bgColor="white">
+    <Box bgColor={colorMode === "dark" ? "gray.800" : "white"}>
       <Tabs isFitted colorScheme="purple">
         <TabList>
           <Tab>Surah</Tab>
