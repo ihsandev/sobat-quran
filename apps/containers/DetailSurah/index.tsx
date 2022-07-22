@@ -14,21 +14,23 @@ import BookmarkAyat from "../../components/Bookmark";
 import { getFromLocalStorage } from "../../../utils/function";
 import useAction from "../../../hooks/useAction";
 
-const DetailSurahContainer = () => {
+const DetailSurahContainer = (props: any) => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const { checkIsBookmark } = useAction();
   const { number }: any = router?.query;
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const loading = router.isFallback;
   const [detailSurah, setDetailSurah] = useState<IDetailSurah | any>({});
   const isLight = colorMode === "light";
 
   useEffect(() => {
-    const getSpecificSurah = async () => {
-      const result = await fetchSpecificSurah(number, setLoading);
-      setDetailSurah(result.data);
-    };
-    getSpecificSurah();
+    // const getSpecificSurah = async () => {
+    //   const result = await fetchSpecificSurah(number, setLoading);
+    //   setDetailSurah(result.data);
+    // };
+    // getSpecificSurah();
+    setDetailSurah(props.detailSurah.data);
   }, [number]);
 
   const scroll = () => {

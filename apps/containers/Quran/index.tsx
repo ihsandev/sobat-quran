@@ -12,14 +12,17 @@ import {
 } from "@chakra-ui/react";
 import ListQuran from "./partials/List";
 import { NotFound } from "../../components";
+import { useRouter } from "next/router";
 
-const HomeContainer = () => {
+const HomeContainer = ({ surah }: any) => {
+  const router = useRouter();
   const { state, dispatch } = useAppContext();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const { colorMode } = useColorMode();
 
   useEffect(() => {
-    fetchAllSurah(setLoading, dispatch);
+    // fetchAllSurah(setLoading, dispatch);
+    dispatch({ type: "SET_LIST_SURAH", payload: surah.data });
     localStorage.removeItem("id-ayat");
   }, []);
 
@@ -33,7 +36,7 @@ const HomeContainer = () => {
 
         <TabPanels maxH="calc(100vh - 10vh)" overflow="auto">
           <TabPanel px={0}>
-            <ListQuran surah={state.surahList} loading={loading} />
+            <ListQuran surah={state.surahList} loading={router.isFallback} />
           </TabPanel>
           <TabPanel>
             <NotFound />
