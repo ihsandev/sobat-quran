@@ -1,4 +1,4 @@
-const baseUrl = "https://api.quran.sutanlab.id";
+const baseUrl = "/api";
 
 const API = {
   surah: `${baseUrl}/surah`,
