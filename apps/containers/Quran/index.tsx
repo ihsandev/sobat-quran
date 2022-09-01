@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchAllSurah } from "../../../services";
+// import { fetchAllSurah } from "../../../services";
+import dataQuran from '../../../services/data/quran.json'
 import useAppContext from "../../../contexts";
 import {
   Box,
@@ -15,13 +16,14 @@ import { NotFound } from "../../components";
 
 const HomeContainer = () => {
   const { state, dispatch } = useAppContext();
-  const [loading, setLoading] = useState(false);
   const { colorMode } = useColorMode();
-
+  const { data = [] } : any = dataQuran;
   useEffect(() => {
-    fetchAllSurah(setLoading, dispatch);
+    dispatch({type: 'SET_LIST_SURAH', payload: data})
     localStorage.removeItem("id-ayat");
   }, []);
+
+  const loading : boolean = state.surahList.length === 0
 
   return (
     <Box bgColor={colorMode === "dark" ? "gray.800" : "white"}>

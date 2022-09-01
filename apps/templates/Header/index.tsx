@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Flex, Box } from "@chakra-ui/layout";
 import { FiArrowLeft } from "react-icons/fi";
-import { Image } from "@chakra-ui/image";
+import Image from "next/image";
 import ButtonColorMode from "../../components/ButtonColorMode";
 import { useColorMode } from "@chakra-ui/color-mode";
 
@@ -38,8 +38,8 @@ const Header = () => {
             <Image
               src="/icons/maskable_icon_x192.png"
               alt="logo-sobat-quran"
-              w="25px"
-              borderRadius="5px"
+              width={25}
+              height={25}
             />
           </a>
         </Link>

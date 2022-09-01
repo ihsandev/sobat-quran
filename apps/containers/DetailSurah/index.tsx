@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/dist/client/router";
-import { fetchSpecificSurah } from "../../../services";
+// import { fetchSpecificSurah } from "../../../services";
 import { Spinner } from "@chakra-ui/spinner";
 import { Image } from "@chakra-ui/image";
 import { FiShare2 } from "react-icons/fi";
@@ -13,23 +13,21 @@ import { IDetailSurah, IVerses } from "../../../utils/data-types";
 import BookmarkAyat from "../../components/Bookmark";
 import { getFromLocalStorage } from "../../../utils/function";
 import useAction from "../../../hooks/useAction";
+import dataQuran from '../../../services/data/quran.json'
 
 const DetailSurahContainer = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const { checkIsBookmark } = useAction();
   const { number }: any = router?.query;
-  const [loading, setLoading] = useState(false);
   const [detailSurah, setDetailSurah] = useState<IDetailSurah | any>({});
   const isLight = colorMode === "light";
+  const { data = [] } : any = dataQuran
 
   useEffect(() => {
-    const getSpecificSurah = async () => {
-      const result = await fetchSpecificSurah(number, setLoading);
-      setDetailSurah(result.data);
-    };
-    getSpecificSurah();
-  }, [number]);
+    const result = data[number - 1]
+    setDetailSurah(result);
+  }, [data, number]);
 
   const scroll = () => {
     const idAyat = getFromLocalStorage("id-ayat");
@@ -43,6 +41,8 @@ const DetailSurahContainer = () => {
     scroll();
     return () => scroll();
   });
+
+  const loading : boolean = detailSurah.length === 0
 
   return (
     <Box pb="8rem" bgColor="white">

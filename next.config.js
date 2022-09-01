@@ -7,7 +7,6 @@ module.exports = withPWA({
     formats: ['image/avif', 'image/webp']
   },
   pwa: {
-    disable: process.env.NODE_ENV === 'development',
     dest: 'public',
     runtimeCaching,
     buildExcludes: [/middleware-manifest\.json$/]
